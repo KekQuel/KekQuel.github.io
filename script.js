@@ -295,6 +295,7 @@ for (let i = 0; i < wotageiColourSpan.length; i++) {
 
 
 wotageiArea.addEventListener("mousemove", function(e) {
+    const rect = wotageiArea.getBoundingClientRect();
     coords.x = e.clientX;
     coords.y = e.clientY + scrollY;
 });
