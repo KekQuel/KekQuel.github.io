@@ -139,6 +139,68 @@ function changeAudio(num) {
 	musicBackground.style.backgroundColor = audioBackgroundColour[playlistIndex];
 	musicBackground.style.boxShadow = audioBackgroundShadow[playlistIndex];
 }
+
+const surveyButton = document.querySelector("#musicSurvey button");
+const musicSurvey = document.getElementById("musicSurvey");
+const musicResult = document.getElementById("musicResult");
+const musicAnswer = document.getElementById("musicAnswer");
+
+surveyButton.addEventListener("click", function submitSurvey() {
+
+	
+
+    const radios = document.getElementsByName('song');
+    let selectedValue;
+    for (const radio of radios) {
+        if (radio.checked) {
+            selectedValue = radio.value;
+            break;
+        }
+    }
+    if (selectedValue) {
+        //makes the question fade into nothing for 0.5s
+        musicSurvey.classList.add('fade-out');
+        setTimeout(() => {
+            musicSurvey.style.display = 'none';
+            musicResult.style.display = 'grid';
+
+
+        }, 500);
+
+        setTimeout(() => {
+            //makes the results pop out
+            musicResult.classList.add('fade-in');
+
+            // Increase the width of the spans
+            document.getElementById('song1Bar').style.width = 'calc(80% * 276 / 870)';
+            document.getElementById('song2Bar').style.width = 'calc(80% * 52.2 / 870)';
+            document.getElementById('song3Bar').style.width = '80%';
+            document.getElementById('song4Bar').style.width = 'calc(80% * 106 / 870)';
+            document.getElementById('song5Bar').style.width = 'calc(80% * 132 / 870)';
+        
+			switch (selectedValue) {
+				case 'Song 1':
+					musicAnswer.innerHTML = "Views are sourced from YouTube (17 July 2024).<br>❌ That's Wrong!<br><br>Fun fact: This song sparked popularity known for its upbeat yet dark lyrics. Not to mention, YOASOBI held a concert in Singapore on 12 Jan 2024! (I was lucky enough to be there >w<)";
+					break;
+				case 'Song 2':
+					musicAnswer.innerHTML = "Views are sourced from YouTube (17 July 2024).<br>❌ That's Wrong!<br><br>Not so fun fact: TUYU had unfortunately disbanded on June 2024. :(<br>Their songs are well known in the rhythm game community.";
+					break;
+				case 'Song 3':
+					musicAnswer.innerHTML = "Views are sourced from YouTube (17 July 2024).<br>&#x2705; That's Correct!<br><br>Fun fact: Kenshi Yonezu is also known to produce Anime Openings, with the most recent being Kick Back for Chainsaw Man!";
+					break;
+				case 'Song 4':
+					musicAnswer.innerHTML = "Views are sourced from YouTube (17 July 2024).<br>❌ That's Wrong!<br><br>Fun fact: One of Vaundy's songs had peaked to #2 on Billboard Japan Hot 100.";
+					break;
+				case 'Song 5':
+					musicAnswer.innerHTML = "Views are sourced from YouTube (17 July 2024).<br>❌ That's Wrong!<br><br>Fun fact: This song is the first Vocaloid song to reach 100M views on Youtube, and is currently the most popular Vocaloid song.";
+					break;
+			}
+		}, 850);
+    }
+
+
+});
+
 let colourIndex = 0;
 const wotageiColourSpan = document.querySelectorAll("#wotageiSettings span");
 for(let i = 0; i < wotageiColourSpan.length; i++) {
@@ -207,14 +269,14 @@ circles.forEach(function(circle, index) {
 		circle.y = 0;
 	}
 	circle.style.backgroundColor = colours[colourIndex][index % 40];
-	circle.style.boxShadow = "0 0 2px 3px " + colours[colourIndex][index % 40];
+	circle.style.boxShadow = "0 0 15px 7px " + colours[colourIndex][index % 40];
 });
 
 function changeColour(num) {
 	colourIndex = num;
 	circles.forEach(function(circle, index) {
 		circle.style.backgroundColor = colours[colourIndex][index % 40];
-		circle.style.boxShadow = "0 0 2px 3px " + colours[colourIndex][index % 40];
+		circle.style.boxShadow = "0 0 15px 7px " + colours[colourIndex][index % 40];
 	});
 }
 wotageiColourSpan.forEach(function(colourObject) {

@@ -460,13 +460,201 @@ b.wotageiSectionItem {
 .musicPlaylistContainer {
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 1fr 4fr 1fr 2fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr 2fr 1fr 7fr;
     background-color: rgba(246,87,117, 0.5);
     box-shadow: 0 0 15px 30px rgba(246,87,117, 0.5);
     width: 100vw;
-    height: 80vh;
+    height: 150vh;
     place-items: center;
     transition: 0.5s ease;
+}
+
+#musicSurvey {
+    grid-row: 6;
+    grid-column: 1 / 4;
+    font-size: 25px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-family: 'Trebuchet MS';
+    text-shadow: 0px 1px 10px rgba(0, 0, 0, 0.6);
+    transition: 0.35s ease-in;
+}
+
+#musicSurvey.fade-out {
+    opacity: 0;
+}
+
+#musicSurvey form label:hover {
+    color: rgb(138, 156, 240);
+    transition: 0.35s;
+
+}
+
+#musicSurvey form label {
+    transition: 0.35s;
+    margin: 15px;
+}
+
+#musicSurvey input {
+    width: 25px;
+    height: 25px;
+    margin: 15px;
+}
+
+#musicSurvey button {
+    margin-top: 20px;
+    padding: 5px 10px;
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+    text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+#musicSurvey button:hover {
+    background-color: rgb(184, 184, 184)
+}
+
+#musicResult {
+    grid-row: 6;
+    grid-column: 1 / 4;
+    font-size: 25px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: left;
+    font-family: 'Trebuchet MS';
+    text-shadow: 0px 1px 10px rgba(0, 0, 0, 0.6);
+
+    grid-template-rows: repeat(5, 100px) 250px;
+    grid-template-columns: 100px 7fr;
+    display: none;
+    transition: 0.5s ease-in;
+    opacity: 0;
+
+    width: 80%;
+    height: 80%;
+}
+
+#musicResult.fade-in {
+    opacity: 1;
+}
+
+.thumbnailContainer {
+    height: 80%;
+    width: 80%;
+    grid-column: 1;
+    align-self: center;
+    background-size: cover;
+    background-position: 50%;
+    justify-self: center;
+    border-radius: 10px;
+}
+
+#musicResult span {
+    height: 30px;
+    max-width: 100%;
+    background-color:#adffd6;
+    box-shadow: 5px 5px 5px 2px rgb(0, 0, 0, 0.35);
+    transition: 1s ease-in;
+    grid-column: 2;
+    color: black;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: right;
+    position: relative; 
+    transition: 1s ease-out;
+}
+
+#musicResult span::after {
+    content: attr(data-views);
+    position: absolute;
+    left: 100%;
+    margin-left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+.thumbnailContainer:nth-child(1) {
+    background-image: url("images/IntoTheNight.jpeg");
+
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.thumbnailContainer:nth-child(2) {
+    background-image: url("images/ComparedChild.jpg");
+
+
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.thumbnailContainer:nth-child(3) {
+    background-image: url("images/Lemon.jpg");
+
+    grid-row: 3;
+    grid-column: 1;
+
+}
+
+.thumbnailContainer:nth-child(4) {
+    background-image: url("images/Fukakouryoku.jpeg");
+
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.thumbnailContainer:nth-child(5) {
+    background-image: url("images/GoodbyeDeclaration.jpg");
+
+    grid-row: 5;
+    grid-column: 1;
+}
+
+
+#musicResult span:nth-child(6) {
+    width: 0%;  /* Initial width */
+    grid-row: 1;
+}
+
+#musicResult span:nth-child(7) {
+    width: 0%;  /* Initial width */
+    grid-row: 2;
+}
+
+#musicResult span:nth-child(8) {
+    width: 0%;  /* Initial width */
+    grid-row: 3;
+    padding-right: 10px;
+}
+
+#musicResult span:nth-child(9) {
+    width: 0%;  /* Initial width */
+    grid-row: 4;
+}
+
+#musicResult span:nth-child(10) {
+    width: 0%;  /* Initial width */
+    grid-row: 5;
+}
+
+#musicAnswer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    grid-column: 1 / 3;
+    grid-row: 6;
+    font-size: 20px;
 }
 
 #musicThumbnail {
@@ -615,6 +803,13 @@ b.wotageiSectionItem {
     grid-template-rows: 11fr 0.5fr 1fr 0.2fr;
 }
 
+.wotageiInteractionContainer h2, .wotageiInteractionContainer p {
+    grid-row: 1;
+    grid-column: 1 / 4;
+    color: grey ;
+    pointer-events: none;
+}
+
 /* the area where the cursor creates a glowy trail */
 #wotageiArea {
     grid-column: 1 / 4;
@@ -634,8 +829,8 @@ b.wotageiSectionItem {
 .glow {
     position: absolute;
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 15px;
+    height: 15px;
     border-radius: 20px;
     pointer-events: none;
     transform: translate(-50%, -50%);
@@ -766,7 +961,7 @@ b.wotageiSectionItem {
     #japaneseHistory div {
         font-size: 15px;
     }
-
+    
     #musicThumbnail {
         width: 50vw;
         height: 50vw;
@@ -880,13 +1075,18 @@ b.wotageiSectionItem {
         font-size: 20px;
     }
 
-    .musicPlaylistContainer, .wotageiInteractionContainer {
+    .wotageiInteractionContainer {
         height: 80vh;
     }
 
     .wotageiInteractionContainer {
         grid-template-rows: 1fr 5fr 0.5fr 3fr 0.5fr;
         grid-template-columns: 0.2fr 1fr 0.5fr 3.3fr 5fr;
+    }
+
+    .wotageiInteractionContainer h2, .wotageiInteractionContainer p {
+        grid-row: 1 / 3;
+        grid-column: 3 / 6;
     }
 
     #wotageiArea {

@@ -78,9 +78,39 @@
                 <span></span>
                 <span></span>
             </div>
+            <div id="musicSurvey">
+                <label>Which of the 5 songs above are the most popular?</label>
+                <form id="surveyForm">
+                    <input type="radio" id="song1" name="song" value="Song 1">
+                    <label for="song1">YOASOBI - Into The Night「夜に駆ける]</label><br>
+                    <input type="radio" id="song2" name="song" value="Song 2">
+                    <label for="song2">TUYU - Compared Child「くらべられっ子」</label><br>
+                    <input type="radio" id="song3" name="song" value="Song 3">
+                    <label for="song3">Kenshi Yonezu - Lemon</label><br>
+                    <input type="radio" id="song4" name="song" value="Song 4">
+                    <label for="song4">Vaundy - Fukakouryoku「不可幸力」</label><br>
+                    <input type="radio" id="song5" name="song" value="Song 5">
+                    <label for="song5">Chinozo - Goodbye Declaration feat. flower</label><br>
+                    <button type="button">Submit</button>
+                </form>
+            </div>
+            <div id="musicResult">
+                <div class="thumbnailContainer"></div>
+                <div class="thumbnailContainer"></div>
+                <div class="thumbnailContainer"></div>
+                <div class="thumbnailContainer"></div>
+                <div class="thumbnailContainer"></div>
+                <span id="song1Bar" data-views="276M Views"></span>
+                <span id="song2Bar" data-views="52.2M Views"></span>
+                <span id="song3Bar" data-views="870M Views"></span>
+                <span id="song4Bar" data-views="106M Views"></span>
+                <span id="song5Bar" data-views="132M Views"></span>
 
+                <div id="musicAnswer"></div>
+            </div>
         </div>
         
+        <br>
 
         <div id="wotagei"></div>
         <h2>Wotagei</h2>
@@ -102,8 +132,10 @@
         </div>
 
         <div class="wotageiInteractionContainer">
-            <div id="wotageiArea">
 
+            <div id="wotageiArea">
+                <h2>Interactive Wotagei</h2>
+                <p>Use your cursor/trackpad to swing around to create a sensation of swinging your glowstick!</p>
                 
             </div>
             <div id="wotageiSettings">
