@@ -40,12 +40,23 @@ h2 {
 
 footer {
     background-color: rgb(31, 34, 37);
+    box-shadow: 0 0 15px 15px rgb(31, 34, 37);
     width: 100%; /* Make the footer full width */
     padding: 20px 0; /* Add some padding for visual spacing */
     display: flex; /* Use flexbox for centering content */
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
     bottom: 0;
+}
+
+footer div {
+    background-image: url("images/webdevQRCode.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 80vw;
+    max-width: 80vh;
+    height: 80vh;
+    max-height: 80vw;
 }
 
 /* Off-Screen Menu */
