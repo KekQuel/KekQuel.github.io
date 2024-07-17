@@ -543,7 +543,7 @@ b.wotageiSectionItem {
     opacity: 0;
 
     width: 80%;
-    height: 80%;
+    height: 100%;
 }
 
 #musicResult.fade-in {
@@ -586,6 +586,7 @@ b.wotageiSectionItem {
     transform: translateY(-50%);
     white-space: nowrap;
 }
+
 
 .thumbnailContainer:nth-child(1) {
     background-image: url("images/IntoTheNight.jpeg");
@@ -981,9 +982,28 @@ b.wotageiSectionItem {
         height: 50vw;
     }
 
-    #musicSurvey, #musicResult {
+    #musicSurvey {
         grid-column: 2;
         font-size: 15px;
+    }
+
+    #musicResult {
+        grid-column: 1 / 4;
+        font-size: 15px;
+    }
+
+    #musicResult span, #musicAnswer {
+        font-size: 15px;
+    }
+
+    #musicResult span:nth-child(8)::after {
+        content: attr(data-views);
+        position: absolute;
+        left: 50%;
+        margin-left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
     }
 
     #musicSurvey input {
