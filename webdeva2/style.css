@@ -905,6 +905,10 @@ b.wotageiSectionItem {
     box-shadow: 0 0 5px 2px hsla(300, 100%, 70%, 0.7);
 }
 
+#fullscreenButton {
+    display: none;
+}
+
 /* Media Queries [Mobile] */
 @media (max-width: 800px) {
     * {
@@ -919,6 +923,12 @@ b.wotageiSectionItem {
     }
     nav .off-screen-menu-items {
         display: none;
+    }
+    #fullscreenButton {
+        display: block;
+        width: 50px;
+        height: 50px;
+        font-size: 40px;
     }
     p, h2{
         font-size: 18px;
@@ -965,6 +975,32 @@ b.wotageiSectionItem {
     #musicThumbnail {
         width: 50vw;
         height: 50vw;
+    }
+
+    #musicSurvey, #musicResult {
+        grid-column: 2;
+        font-size: 15px;
+    }
+
+    #musicSurvey input {
+        width: 15px;
+        height: 15px;
+        margin: 10px;
+    }
+    
+    #musicSurvey button {
+        margin-top: 20px;
+        padding: 5px 10px;
+        width: 80px;
+        height: 40px;
+        font-size: 15px;
+        font-weight: bold;
+        color: black;
+        background-color: white;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+        text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
     }
 
     @keyframes musicTransition {

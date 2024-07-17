@@ -450,3 +450,48 @@ function highlightButton(currentTime) {
     });
 }
 /* jshint ignore:end */
+
+let isFullScreen = false;
+const fullscreenButton = document.getElementById("fullscreenButton");
+
+function enterFullscreen() {
+	if (document.documentElement.requestFullscreen) {
+	document.documentElement.requestFullscreen();
+	isFullScreen = true;
+	} else if (document.documentElement.mozRequestFullScreen) { // Firefox
+	document.documentElement.mozRequestFullScreen();
+	isFullScreen = true;
+	} else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+	document.documentElement.webkitRequestFullscreen();
+	isFullScreen = true;
+	} else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+	document.documentElement.msRequestFullscreen();
+	isFullScreen = true;
+	}
+}// Function to exit fullscreen mode
+
+function exitFullscreen() {
+	if (document.exitFullscreen) {
+	document.exitFullscreen();
+	isFullScreen = false;
+	} else if (document.mozCancelFullScreen) { // Firefox
+	document.mozCancelFullScreen();
+	isFullScreen = false;
+	} else if (document.webkitExitFullscreen) { // Chrome, Safari, and Opera
+	document.webkitExitFullscreen();
+	isFullScreen = false;
+	} else if (document.msExitFullscreen) { // IE/Edge
+	document.msExitFullscreen();
+	isFullScreen = false;
+	}
+}
+
+
+fullscreenButton.addEventListener("click", () => {
+	if (isFullScreen) {
+		exitFullscreen();
+	}
+	else {
+		enterFullscreen();
+	}
+});

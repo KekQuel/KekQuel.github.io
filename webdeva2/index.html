@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Japanese Music!</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="some web app!!!">
+    <!-- get icons from https://favicon.io/ -->
+    <link rel="icon" type="image/x-icon" href="images/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon.png">
+    <!--for android-->
+    <link rel="manifest" href="Icons/site.webmanifest">
     <link rel="stylesheet" href="style.css">
+    
+    
     <!--youtube API code (not considered external library) since its provided through a link, not a library-->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js" defer></script> 
@@ -23,7 +36,7 @@
         <div class="off-screen-menu-items"><a href="#exploreJapanese"><div>Menu</div></a></div>
         <div class="off-screen-menu-items"><a href="#popularJPopMusic"><div>Popular J-Pop Music</div></a></div>
         <div class="off-screen-menu-items"><a href="#wotagei"><div>Wotagei</div></a></div>
-        
+        <div id="fullscreenButton">&#x26F6;</div>
         <div class="ham-menu">
             <span></span>
             <span></span>
