@@ -400,6 +400,10 @@ b.wotageiSectionItem {
     box-shadow: 0 10px 15px 15px rgba(0, 0, 0, 0.7);
 }
 
+#player iframe {
+    border: none;
+}
+
 #wazaContainer {
     grid-column: 3;
     grid-row: 6;
