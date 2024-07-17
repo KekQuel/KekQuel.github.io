@@ -377,8 +377,14 @@ function animateCircles() {
 //animateCircles();
 requestAnimationFrame(animateCircles);
 
+
 /* jshint ignore:start */
-//youtube API code (not considered external library)
+// Load the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 const videoObj = document.querySelector("#player");
 let player;
 
@@ -389,22 +395,29 @@ function onYouTubeIframeAPIReady() {
         videoId: 'MuvJR2Pc9Vc',
         events: {
             'onReady': onPlayerReady,
-			'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
         }
     });
 }
 
+// debug onPlayerReady
 function onPlayerReady() {
-	//Player is ready
+    console.log('Player is ready');
 }
-
+// load the video
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
         setInterval(checkTime, 1000); // Check time every second
     }
 }
 
+//debug purpose for ettor
+function onPlayerError(event) {
+    console.error('Error occurred: ', event);
+}
 
+//go to this timestamp in the video
 function seekTo(timeInSeconds) {
     if (player && player.seekTo) {
         player.seekTo(timeInSeconds, true);
@@ -427,11 +440,13 @@ document.getElementById('Romance').addEventListener('click', function() {
     seekTo(67); // Set to Romance Waza
 });
 
+//get the timestamp of current video
 function checkTime() {
     const currentTime = player.getCurrentTime();
     highlightButton(currentTime);
 }
 
+//timestamp buttons
 function highlightButton(currentTime) {
     const buttons = [
         { id: 'OAD', time: 17, length: 22 },
@@ -439,7 +454,7 @@ function highlightButton(currentTime) {
         { id: 'Thundersnake', time: 55.5, length: 11.5 },
         { id: 'Romance', time: 67, length: 13 }
     ];
-
+	//get element in each button then go to this timestamp lasting with current length given
     buttons.forEach(button => {
         const waza = document.getElementById(button.id);
         if (currentTime >= button.time && currentTime < button.time + button.length) { // Highlight for 10 seconds
