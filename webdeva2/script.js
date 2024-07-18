@@ -1,16 +1,21 @@
 /* jshint esversion: 6 */
 
+// hamburger menu code
 const hamMenu = document.querySelector(".ham-menu");
 const offScreenMenu = document.querySelector(".off-screen-menu");
+
 hamMenu.addEventListener("click", () => {
-	hamMenu.classList.toggle("active");
-	offScreenMenu.classList.toggle("active");
+	hamMenu.classList.toggle("active"); // toggles the span from hamburger symbol to X
+	offScreenMenu.classList.toggle("active"); // toggles the menu sliding from off screen
 });
 
+// japanese music history code
 const japaneseHistory = document.getElementById("japaneseHistory");
 const historyTabs = japaneseHistory.querySelectorAll("ul li");
-let historyIndex = 0;
 const historyBackground = japaneseHistory.querySelector("div");
+
+//changes what they are displaying based on tab
+let historyIndex = 0;
 const historyBackgroundImages = [
     "images/Taiko_drum.jpg",
     "images/arrivalOfWesternMusic.jpg",
@@ -47,26 +52,31 @@ const historyContent = [
      the best-selling singles each year of the 2010s.`
 ];
 
+// initialise innerHTML
 historyBackground.innerHTML = historyContent[0];
 
 
-// Function to change the background image with animation
+// Function to change the background image with animation + transition
 function changeBackgroundImage(index) {
-    // Start the fade-out transition
+    // add fade-out transition
     historyBackground.classList.add("fade-out");
 
     setTimeout(() => {
+    // reflow by reading a property before changing the background image
+	void historyBackground.offsetHeight; // This forces the reflow
+
     // Before changing the background image, trigger a reflow
     historyBackground.style.backgroundImage = 'radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0,0,0,0.9)), url("' + historyBackgroundImages[index] + '")';
 
-    // After reflow, remove fade-out and add fade-in
+    //remove fade-out and add fade-in
     historyBackground.classList.remove("fade-out");
     historyBackground.classList.add("fade-in");
     historyBackground.innerHTML = historyContent[index];
 
-    }, 500); // Duration matches the CSS transition duration
+    }, 500); // set duration based on transition duration
 }
 
+//changes the tab
 historyTabs.forEach(function(tab, index) {
     tab.addEventListener("click", function() {
         historyTabs[historyIndex].classList.remove("active");
@@ -78,12 +88,12 @@ historyTabs.forEach(function(tab, index) {
     });
 });
 
-// Optional: Remove the fade-in class after the transition ends to reset for next transition
+// remove the fade-in class after the transition ends to reset for next transition
 historyBackground.addEventListener('transitionend', function() {
     historyBackground.classList.remove('fade-in');
 });
 
-
+// music playlist code initialisation
 const leftButton = document.querySelector(".leftButton");
 const rightButton = document.querySelector(".rightButton");
 const audio = document.querySelector("#musicAudio");
@@ -130,25 +140,27 @@ function changeAudio(num) {
 	musicThumbnail.classList.remove("music-thumbnail-animation");
 	void musicThumbnail.offsetWidth; // Trigger reflow
 	musicThumbnail.classList.add("music-thumbnail-animation");
-	audioSource.src = audioLinks[playlistIndex];
+	musicThumbnail.style.backgroundImage = 'url(' + audioThumbnails[playlistIndex] + ')';
+
+	audioSource.src = audioLinks[playlistIndex]; //set new audio source
 	audio.load(); // reload the audio element to apply the new source
 	audio.play(); // play the new audio
+
+	//changes music title and thumbnail and background
 	musicTitle.textContent = audioTitles[playlistIndex];
-	musicThumbnail.style.backgroundImage = 'url(' + audioThumbnails[playlistIndex] + ')';
 	musicIndexChildren[playlistIndex].classList.add("active");
 	musicBackground.style.backgroundColor = audioBackgroundColour[playlistIndex];
 	musicBackground.style.boxShadow = audioBackgroundShadow[playlistIndex];
 }
 
+// music quiz/survey code
 const surveyButton = document.querySelector("#musicSurvey button");
 const musicSurvey = document.getElementById("musicSurvey");
 const musicResult = document.getElementById("musicResult");
 const musicAnswer = document.getElementById("musicAnswer");
 
-surveyButton.addEventListener("click", function submitSurvey() {
-
-	
-
+surveyButton.addEventListener("click", function submitSurvey()
+{
     const radios = document.getElementsByName('song');
     let selectedValue;
     for (const radio of radios) {
@@ -163,8 +175,6 @@ surveyButton.addEventListener("click", function submitSurvey() {
         setTimeout(() => {
             musicSurvey.style.display = 'none';
             musicResult.style.display = 'grid';
-
-
         }, 500);
 
         setTimeout(() => {
@@ -177,7 +187,9 @@ surveyButton.addEventListener("click", function submitSurvey() {
             document.getElementById('song3Bar').style.width = '80%';
             document.getElementById('song4Bar').style.width = 'calc(80% * 106 / 870)';
             document.getElementById('song5Bar').style.width = 'calc(80% * 132 / 870)';
-        
+			
+
+			//cases for what option they choose
 			switch (selectedValue) {
 				case 'Song 1':
 					musicAnswer.innerHTML = "Views are sourced from YouTube (17 July 2024).<br>❌ That's Wrong!<br><br>Fun fact: This song sparked popularity known for its upbeat yet dark lyrics. Not to mention, YOASOBI held a concert in Singapore on 12 Jan 2024! (I was lucky enough to be there >w<)";
@@ -204,17 +216,17 @@ surveyButton.addEventListener("click", function submitSurvey() {
 let colourIndex = 0;
 const wotageiColourSpan = document.querySelectorAll("#wotageiSettings span");
 for(let i = 0; i < wotageiColourSpan.length; i++) {
-	wotageiColourSpan[i].index = i;
+	wotageiColourSpan[i].index = i; //funny thing is I have to give them index attribute for them to work
 }
 const wotageiArea = document.querySelector("#wotageiArea");
-const rect = wotageiArea.getBoundingClientRect();
+const rect = wotageiArea.getBoundingClientRect(); //defines the boundaries of where the trail can go
 const fixedRect = {
 	top: rect.top + window.scrollY,
 	right: rect.right + window.scrollX,
 	bottom: rect.bottom + window.scrollY,
 	left: rect.left + window.scrollX
 };
-const circles = document.querySelectorAll(".glow");
+const circles = document.querySelectorAll(".glow"); //circle init
 const coords = {
 	x: undefined,
 	y: undefined
@@ -234,6 +246,7 @@ if(isMobile) {
 	coords.x = 0;
 	coords.y = 0;
 }
+//all the colour gradients
 const colours = [
 	[ //red
 		"#ff6666", "#fc6463", "#f86160", "#f55f5e", "#f25c5b", "#ee5a58", "#eb5855", "#e85553", "#e45350", "#e1514d", "#de4e4b", "#da4c48", "#d74a46", "#d44743", "#d04540", "#cd433e", "#ca403b", "#c73e39", "#c33b36", "#c03934", "#bd3731", "#ba342f", "#b6322c", "#b32f2a", "#b02d27", "#ad2b25", "#a92822", "#a62620", "#a3231d", "#a0201b", "#9c1e19", "#991b16", "#961814", "#931511", "#90120f", "#8d0f0c", "#890b0a", "#860706", "#830303", "#800000"
@@ -260,7 +273,7 @@ const colours = [
 		"#ff66ff", "#fe64fc", "#fe62f9", "#fd60f6", "#fd5ef3", "#fc5cf0", "#fc5aed", "#fb58eb", "#fa56e8", "#fa54e5", "#f951e2", "#f84fdf", "#f74ddc", "#f64bd9", "#f649d6", "#f547d4", "#f445d1", "#f343ce", "#f241cb", "#f13ec8", "#f03cc5", "#ef3ac3", "#ee38c0", "#ed35bd", "#ec33ba", "#eb31b8", "#ea2eb5", "#e92cb2", "#e829af", "#e727ad", "#e624aa", "#e521a7", "#e41ea5", "#e21ba2", "#e1189f", "#e0149d", "#df109a", "#de0b97", "#dc0595", "#db0092"
 	]
 ];
-circles.forEach(function(circle, index) {
+circles.forEach(function(circle, index) { //set the position to center of area for mobile, offscreen for desktop
 	if(isMobile) {
 		circle.x = coords.x;
 		circle.y = coords.y;
@@ -272,7 +285,7 @@ circles.forEach(function(circle, index) {
 	circle.style.boxShadow = "0 0 15px 7px " + colours[colourIndex][index % 40];
 });
 
-function changeColour(num) {
+function changeColour(num) { //change colour when user clicks on a new colour
 	colourIndex = num;
 	circles.forEach(function(circle, index) {
 		circle.style.backgroundColor = colours[colourIndex][index % 40];
@@ -284,9 +297,11 @@ wotageiColourSpan.forEach(function(colourObject) {
 		changeColour(colourObject.index);
 	});
 });
+
 const buttons = document.querySelectorAll("#wotageiMovements div");
 //move circle stuff [desktop]
 if(!isMobile) {
+	//move based on cursor location
 	wotageiArea.addEventListener("mousemove", function(e) {
 		coords.x = e.clientX;
 		coords.y = e.clientY + window.scrollY;
@@ -316,6 +331,7 @@ else {
 				else if(button.getAttribute("data-direction") === "bottom-left" || button.getAttribute("data-direction") === "down" || button.getAttribute("data-direction") === "bottom-right") {
 					velocity.y += 2;
 				}
+				//stops the circles from going off the area
 				if(coords.x + velocity.x > fixedRect.right) {
 					velocity.x = 0;
 					coords.x = fixedRect.right;
@@ -340,31 +356,29 @@ else {
 					velocity.x = 0;
 					velocity.y = 0;
 				}
-				// Add your continuous hold action here
-			}, 25); // Adjust the interval time as needed (100 milliseconds in this example)
+			}, 25); //intervals in ms
 		});
 		button.addEventListener("touchend", function() {
-			clearInterval(holdInterval); // Clear the interval if touch is released
+			clearInterval(holdInterval); // clear the interval if touch is released
 			velocity.x = 0;
 			velocity.y = 0;
-		});
-		button.addEventListener("touchmove", function() {
-			clearInterval(holdInterval); // Clear the interval if touch is moved
 		});
 	});
 }
 
+// make the circles move smoothly
 function animateCircles() {
 	let x = coords.x;
 	let y = coords.y;
-	circles.forEach(function(circle, index) {
+	circles.forEach(function(circle, index) { //set the location of circle to current location
 		circle.style.left = x + "px";
 		circle.style.top = y + "px";
 		if(isMobile) {
 			circle.style.left = x - 12 + "px";
 			circle.style.top = y - 12 + "px";
 		}
-		circle.style.scale = (circles.length - index) / circles.length + 0.5;
+		//decrease scale of circle
+		circle.style.scale = (circles.length - index) / circles.length + 0.5;animateCircles
 		circle.x = x;
 		circle.y = y;
 		// delay circles
@@ -374,20 +388,22 @@ function animateCircles() {
 	});
 	requestAnimationFrame(animateCircles);
 }
-//animateCircles();
+//moves in animation frame
 requestAnimationFrame(animateCircles);
 
 
 /* jshint ignore:start */
-// Load the IFrame Player API code asynchronously.
+//youtube API code (not considered external library) since its provided through a link, not a library
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+//gets the video from html
 const videoObj = document.querySelector("#player");
 let player;
 
+//loads the youtube api
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: videoObj.style.height,
@@ -412,7 +428,7 @@ function onPlayerStateChange(event) {
     }
 }
 
-//debug purpose for ettor
+//debug purpose for error
 function onPlayerError(event) {
     console.error('Error occurred: ', event);
 }
@@ -424,6 +440,7 @@ function seekTo(timeInSeconds) {
     }
 }
 
+//section to move towards the timestamp of waza(techniques)
 document.getElementById('OAD').addEventListener('click', function() {
     seekTo(17); // Set to OAD waza
 });
@@ -466,11 +483,13 @@ function highlightButton(currentTime) {
 }
 /* jshint ignore:end */
 
+// fullscreen code section
+//set fullscreen to false at first bc mobile is always in windowed initially
 let isFullScreen = false;
 const fullscreenButton = document.getElementById("fullscreenButton");
 
 function enterFullscreen() {
-	if (document.documentElement.requestFullscreen) {
+	if (document.documentElement.requestFullscreen) { // other browsers
 	document.documentElement.requestFullscreen();
 	isFullScreen = true;
 	} else if (document.documentElement.mozRequestFullScreen) { // Firefox
@@ -483,10 +502,10 @@ function enterFullscreen() {
 	document.documentElement.msRequestFullscreen();
 	isFullScreen = true;
 	}
-}// Function to exit fullscreen mode
+}
 
 function exitFullscreen() {
-	if (document.exitFullscreen) {
+	if (document.exitFullscreen) { // other browsers
 	document.exitFullscreen();
 	isFullScreen = false;
 	} else if (document.mozCancelFullScreen) { // Firefox
@@ -501,7 +520,7 @@ function exitFullscreen() {
 	}
 }
 
-
+// when player click fullscreen button, enter/exit fullscreen depending on isFullScreen
 fullscreenButton.addEventListener("click", () => {
 	if (isFullScreen) {
 		exitFullscreen();

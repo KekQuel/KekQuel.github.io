@@ -9,7 +9,7 @@ body, html {
     font-family: 'Trebuchet MS';
 }
 
-a{
+a{ /* nav link to section of the page */
     text-decoration: none;
     color: whitesmoke;
     transition: 0.5s;
@@ -19,6 +19,7 @@ a:hover {
     color: rgb(229, 143, 255);
 }
 
+/* used for texts in html */
 p, h2 {
     display: block;
     white-space: pre-wrap;
@@ -27,12 +28,8 @@ p, h2 {
     text-align: center;
 }
 
-h2, footer {
-    font-size: 50px;
-    font-weight: bold;
-}
-
 h2 {
+    font-size: 50px; /*override the font size */
     margin: 200px;
     padding-bottom: 20px;
     border-bottom: 2px solid white;
@@ -41,15 +38,15 @@ h2 {
 footer {
     background-color: rgb(31, 34, 37);
     box-shadow: 0 0 15px 15px rgb(31, 34, 37);
-    width: 100%; /* Make the footer full width */
-    padding: 20px 0; /* Add some padding for visual spacing */
-    display: flex; /* Use flexbox for centering content */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    width: 100%;
+    padding: 20px 0; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
     bottom: 0;
 }
 
-footer div {
+footer div { /*qr code holder */
     background-image: url("images/webdevQRCode.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -59,7 +56,7 @@ footer div {
     max-height: 80vw;
 }
 
-/* Off-Screen Menu */
+/* Off-Screen Menu which extends from top to bottom */
 .off-screen-menu {
     background-image: linear-gradient(to left, rgba(22, 24, 26, 1),rgba(22, 24, 26, 0.7));
     height: 100vh;
@@ -67,7 +64,7 @@ footer div {
     max-width: 450px;
     position: fixed;
     top: 0;
-    right: -450px;
+    right: -450px; /*makes it off screen*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,6 +75,7 @@ footer div {
     z-index: 1000;
 }
 
+/* comes to the viewing screen when active */
 .off-screen-menu.active {
     right: 0;
 }
@@ -88,12 +86,7 @@ footer div {
     font-weight: bolder;
 }
 
-#exploreJapanese, #popularJPopMusic, #wotagei {
-    transition: 0.5s ease;
-}
-
-/* Navigation */
-nav {
+nav { /*area on top*/
     padding: 1rem;
     display: flex;
     background-image: linear-gradient(to bottom, rgba(31, 34, 37, 0.9),rgba(31, 34, 37, 0.9) ,rgba(31, 34, 37, 0));
@@ -111,6 +104,7 @@ nav .off-screen-menu-items {
     padding-right: 6vw;
 }
 
+/*dimensions of the ham menu*/
 .ham-menu {
     height: 50px;
     width: 40px;
@@ -122,6 +116,7 @@ nav .off-screen-menu-items {
     display: none;
 }
 
+/*spans that create the symbol*/
 .ham-menu span {
     height: 5px;
     width: 100%;
@@ -133,6 +128,8 @@ nav .off-screen-menu-items {
     transform: translate(-50%, -50%);
     transition: .3s ease;
 }
+
+/*coords of span*/
 
 .ham-menu span:nth-child(1) {
     top: 25%;
@@ -156,8 +153,9 @@ nav .off-screen-menu-items {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* Title Screen */
 .titleScreenContainer {
+/* container with huge background img*/
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,11 +175,10 @@ nav .off-screen-menu-items {
     animation: introductionSize 1s ease-in-out;
 }
 
+
 .introPlay {
     animation: introduction 1.5s ease-in-out;
 }
-
-
 
 .titleScreen {
     width: auto;
@@ -204,6 +201,7 @@ h1.titleScreen {
     margin-right: 5vw;
     width: 400px; /* Adjust this width as needed */
     height: 350px;
+    /* container containing an img*/
 
     background-image: url("images/traditional-japanese-music.jpeg");
     background-repeat: no-repeat;
@@ -216,6 +214,7 @@ h1.titleScreen {
 
 }
 
+/* fades in animation */
 @keyframes introduction {
     0% {
         opacity: 0;
@@ -236,6 +235,7 @@ h1.titleScreen {
     }
 }
 
+/* container with japanese music history */
 #japaneseHistory {
     width: 100vw;
     max-width: 100%;
@@ -244,6 +244,8 @@ h1.titleScreen {
     box-shadow: 0 0 15px 15px rgb(0, 0, 0, 0.35);
     overflow-x:hidden;
 }
+
+/* list holder*/
 
 #japaneseHistory ul {
     list-style-type: none;
@@ -263,6 +265,8 @@ h1.titleScreen {
     border-bottom: solid 2px #000000;
 }
 
+/* lists */
+
 #japaneseHistory li {
     display: inline-flex;
     color: whitesmoke;
@@ -280,6 +284,9 @@ h1.titleScreen {
     transition: 0.5s;
 }
 
+
+/* glows when cursor hover */
+
 #japaneseHistory li:hover {
     background-color: rgb(63, 90, 148);
     transition: 0.5s;
@@ -289,6 +296,8 @@ h1.titleScreen {
     background-color: rgb(63, 90, 148);
     transition: 0.5s;
 }
+
+/* background */
 
 #japaneseHistory div {
     width: calc(100% - 60px);
@@ -317,6 +326,9 @@ h1.titleScreen {
     opacity: 1;
     animation: historyTransition 0.5s ease;
 }
+
+
+/* transition fade */
 
 @keyframes historyTransition {
     0% {
@@ -361,6 +373,8 @@ h1.titleScreen {
     box-shadow: 8px 15px 15px 15px rgba(0, 0, 0, 0.6);
 }
 
+/* text boxes */
+
 .wotageiSectionItem {
     text-align: left;
     font-size: 24px;
@@ -371,6 +385,8 @@ h1.titleScreen {
     grid-column: 6 / 12;
     grid-row: 2 / 3;
 }
+
+/* text boxes */
 
 b.wotageiSectionItem {
     font-weight: normal;
@@ -389,6 +405,8 @@ b.wotageiSectionItem {
     grid-row: 5;
 }
 
+/* video container */
+
 #player {
     border: none;
     width: 560px; 
@@ -399,10 +417,11 @@ b.wotageiSectionItem {
     justify-self: center;
     box-shadow: 0 10px 15px 15px rgba(0, 0, 0, 0.7);
 }
-
 #player iframe {
     border: none;
 }
+
+/* lists of waza(technique) in the videos */
 
 #wazaContainer {
     grid-column: 3;
@@ -413,6 +432,7 @@ b.wotageiSectionItem {
     background-color: rgb(48, 53, 64);
 }
 
+/* button that when press goes to timestamp */
 .seek-btn {
     width: 100%;
     height: 50%;
@@ -435,11 +455,12 @@ b.wotageiSectionItem {
     background-color: rgb(60, 66, 80);
     height: 100%;
 }
+
+/* highlights different colour depending on timestamp */
 #OAD.highlight, #Rosario.highlight {
     background-color: rgb(40, 61, 180);
     height: 100%;
 }
-
 #Thundersnake.highlight, #Romance.highlight{
     background-color: rgb(255, 193, 79);
     height: 100%;
@@ -473,6 +494,7 @@ b.wotageiSectionItem {
     transition: 0.5s ease;
 }
 
+/* music form container */
 #musicSurvey {
     grid-row: 6;
     grid-column: 1 / 4;
@@ -507,6 +529,7 @@ b.wotageiSectionItem {
     margin: 15px;
 }
 
+/* submit button */
 #musicSurvey button {
     margin-top: 20px;
     padding: 5px 10px;
@@ -526,6 +549,7 @@ b.wotageiSectionItem {
     background-color: rgb(184, 184, 184)
 }
 
+/* result container */
 #musicResult {
     grid-row: 6;
     grid-column: 1 / 4;
@@ -550,6 +574,7 @@ b.wotageiSectionItem {
     opacity: 1;
 }
 
+/* images of thumbnails for result */
 .thumbnailContainer {
     height: 80%;
     width: 80%;
@@ -561,6 +586,7 @@ b.wotageiSectionItem {
     border-radius: 10px;
 }
 
+/* bar graph */
 #musicResult span {
     height: 30px;
     max-width: 100%;
@@ -577,6 +603,7 @@ b.wotageiSectionItem {
     transition: 1s ease-out;
 }
 
+/* text that shows views */
 #musicResult span::after {
     content: attr(data-views);
     position: absolute;
@@ -587,7 +614,7 @@ b.wotageiSectionItem {
     white-space: nowrap;
 }
 
-
+/* lists of images */
 .thumbnailContainer:nth-child(1) {
     background-image: url("images/IntoTheNight.jpeg");
 
@@ -625,7 +652,7 @@ b.wotageiSectionItem {
     grid-column: 1;
 }
 
-
+/* initial width for each child which will expand in transition */
 #musicResult span:nth-child(6) {
     width: 0%;  /* Initial width */
     grid-row: 1;
@@ -640,6 +667,7 @@ b.wotageiSectionItem {
     width: 0%;  /* Initial width */
     grid-row: 3;
     padding-right: 10px;
+    /* might go off screen so padding is added */
 }
 
 #musicResult span:nth-child(9) {
@@ -652,6 +680,7 @@ b.wotageiSectionItem {
     grid-row: 5;
 }
 
+/* textbox that gives answer and fun fact */
 #musicAnswer {
     display: flex;
     align-content: center;
@@ -662,6 +691,7 @@ b.wotageiSectionItem {
     font-size: 20px;
 }
 
+/* thumbnail for music playlist */
 #musicThumbnail {
     grid-row: 2;
     grid-column: 2;
@@ -674,6 +704,7 @@ b.wotageiSectionItem {
     border-radius: 10px;
 }
 
+/* expands from nothing when switching to new song */
 .music-thumbnail-animation {
     animation: musicTransition 0.8s ease-out;
     animation-play-state: running;
@@ -692,6 +723,7 @@ b.wotageiSectionItem {
     }
 }
 
+/* audio container */
 .music-audio {
     grid-column: 2;
     grid-row: 3;
@@ -701,6 +733,7 @@ b.wotageiSectionItem {
     max-width: 350px;
 }
 
+/* title for music playing */
 #musicTitle {
     grid-row: 4;
     grid-column: 2;
@@ -716,6 +749,7 @@ b.wotageiSectionItem {
     text-shadow: 0px 1px 10px rgba(0, 0, 0, 0.6);
 }
 
+/* container for index */
 #musicIndex {
     grid-column: 2;
     grid-row: 5;
@@ -726,6 +760,7 @@ b.wotageiSectionItem {
     padding: 1vw
 }
 
+/* circles that when click also directs to that song index */
 #musicIndex span {
     width: 20px;
     height: 20px;
@@ -765,6 +800,7 @@ b.wotageiSectionItem {
     grid-column: 3;
 }
 
+/* arrow symbols */
 .leftButton span, .rightButton span {
     width: 30px;
     height: 5px;
@@ -808,6 +844,7 @@ b.wotageiSectionItem {
     grid-template-rows: 11fr 0.5fr 1fr 0.2fr;
 }
 
+/* textbox that is greyed to enhance viewing */
 .wotageiInteractionContainer h2, .wotageiInteractionContainer p {
     grid-row: 1;
     grid-column: 1 / 4;
@@ -825,12 +862,14 @@ b.wotageiSectionItem {
     overflow: hidden;
 }
 
+/* display none for pc */
 #wotageiMovements {
     display: none;
     width: 0;
     height: 0;
 }
 
+/* glowy circles */
 .glow {
     position: absolute;
     display: block;
@@ -857,6 +896,7 @@ b.wotageiSectionItem {
     z-index: 500;
 }
 
+/* colour settings  */
 #wotageiSettings span {
     display: inline-flex;
     align-self: center;
@@ -910,6 +950,7 @@ b.wotageiSectionItem {
     box-shadow: 0 0 5px 2px hsla(300, 100%, 70%, 0.7);
 }
 
+/* mobile exclusive, no need for pc */
 #fullscreenButton {
     display: none;
 }
@@ -919,6 +960,7 @@ b.wotageiSectionItem {
     * {
         max-width: 100%;
     }
+    /* show hamburger menu on mobile */
     .hamburger {
         display: block;
         margin-right: 10vw;
@@ -929,13 +971,14 @@ b.wotageiSectionItem {
     nav .off-screen-menu-items {
         display: none;
     }
+    /* show fullscreen button on mobile */
     #fullscreenButton {
         display: block;
         width: 50px;
         height: 50px;
         font-size: 40px;
     }
-    p, h2{
+    p, h2{ /* reduce font size */
         font-size: 18px;
         margin: 20px;
         text-align: center;
@@ -945,10 +988,7 @@ b.wotageiSectionItem {
         font-size: 36px;
         margin: 50px 20px;
     }
-    footer {
-        font-size: 24px;
-        width: 100vw;
-    }
+    /* reduce size */
     .titleScreenContainer {
         margin: 20px auto;
         flex-direction: column;
@@ -965,10 +1005,11 @@ b.wotageiSectionItem {
         margin-bottom: 20px;
     }
 
+    /* chage format to 1/3 instead of 3fr + something */
     #japaneseHistory ul {
         grid-template-columns: repeat(3, 1fr);
     }
-
+    /* reduce size */
     #japaneseHistory li {
         font-size: 15px;
     }
@@ -995,7 +1036,7 @@ b.wotageiSectionItem {
     #musicResult span, #musicAnswer {
         font-size: 15px;
     }
-
+    /* shifts the view display to inside the bar bc it cuts off screen */
     #musicResult span:nth-child(8)::after {
         content: attr(data-views);
         position: absolute;
@@ -1055,13 +1096,14 @@ b.wotageiSectionItem {
     .music-audio {
         width: 100%;
     }
-
+    /* change layout */
     .wotageiSectionContainer {
         grid-template-rows: auto 20px auto 20px auto 50px auto 25px auto 25px;
         grid-template-columns: auto;
         align-items: center;
         justify-items: center;
     }
+    /* most of these are reformatting */
     #wotageiImg {
         width: 80vw;
         height: calc(80vw / 7 * 4);
@@ -1134,12 +1176,9 @@ b.wotageiSectionItem {
         grid-row: 6;
         font-size: 20px;
     }
-
+    /*reformating interaction area*/
     .wotageiInteractionContainer {
         height: 80vh;
-    }
-
-    .wotageiInteractionContainer {
         grid-template-rows: 1fr 5fr 0.5fr 3fr 0.5fr;
         grid-template-columns: 0.2fr 1fr 0.5fr 3.3fr 5fr;
     }
