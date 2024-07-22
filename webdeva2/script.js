@@ -157,7 +157,6 @@ function changeAudio(num) {
 const surveyButton = document.querySelector("#musicSurvey button");
 const musicSurvey = document.getElementById("musicSurvey");
 const musicResult = document.getElementById("musicResult");
-const musicAnswer = document.getElementById("musicAnswer");
 
 surveyButton.addEventListener("click", function submitSurvey()
 {
@@ -188,7 +187,9 @@ surveyButton.addEventListener("click", function submitSurvey()
             document.getElementById('song4Bar').style.width = 'calc(80% * 106 / 870)';
             document.getElementById('song5Bar').style.width = 'calc(80% * 132 / 870)';
 			
-
+			let musicAnswer = document.createElement("div");
+			musicAnswer.id = "musicAnswer";
+			musicResult.appendChild(musicAnswer);
 			//cases for what option they choose
 			switch (selectedValue) {
 				case 'Song 1':
