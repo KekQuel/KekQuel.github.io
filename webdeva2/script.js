@@ -379,7 +379,7 @@ function animateCircles() {
 			circle.style.top = y - 12 + "px";
 		}
 		//decrease scale of circle
-		circle.style.scale = (circles.length - index) / circles.length + 0.5;animateCircles
+		circle.style.scale = (circles.length - index) / circles.length + 0.5;
 		circle.x = x;
 		circle.y = y;
 		// delay circles
