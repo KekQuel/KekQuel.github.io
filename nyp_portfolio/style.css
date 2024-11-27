@@ -1,0 +1,118 @@
+/* Base styles */
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Glowing Title */
+h1 {
+    font-size: 3rem;
+    color: #d7ff68;
+    text-shadow: 0 0 8px #d7ff68, 0 0 16px #d7ff68, 0 0 24px #d7ff68;
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Subtitle */
+h2 {
+    font-size: 1.5rem;
+    color: #ee656c;
+    text-shadow: 0 0 6px #f3121d, 0 0 12px #f3121d;
+    margin-top: -10px;
+}
+
+/* Links with Neon Effect */
+a {
+    color: #3498db;
+    text-decoration: none;
+    text-shadow: 0 0 4px #3498db, 0 0 8px #2980b9;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+a:hover {
+    color: #9b59b6;
+    text-shadow: 0 0 8px #9b59b6, 0 0 16px #8e44ad;
+}
+
+/* Animated Background Stars */
+@keyframes stars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -1000px 1000px;
+    }
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: url('https://www.transparenttextures.com/patterns/tiny-stars.png');
+    opacity: 0.1;
+    z-index: 0;
+    animation: stars 30s linear infinite;
+}
+
+/* Glowing Animation */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 8px #0f0, 0 0 16px #00ff00, 0 0 24px #00ff00;
+    }
+    to {
+        text-shadow: 0 0 12px #0f0, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+}
+
+/* Retro Buttons */
+button {
+    background: none;
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 6px #e74c3c;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e74c3c;
+    color: #1a1a2e;
+    box-shadow: 0 0 12px #e74c3c, 0 0 24px #c0392b;
+}
+
+#fumo {
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#fumo.spin {
+    animation: spin 2s linear infinite; /* Spins continuously */
+}
