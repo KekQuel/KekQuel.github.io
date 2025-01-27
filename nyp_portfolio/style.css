@@ -1,6 +1,6 @@
 /* Base styles */
 body {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    background: radial-gradient(hsl(240, 29%, 9%), #16213e);
     font-family: 'Press Start 2P', cursive; /* Retro pixel font */
     color: #ffffff;
     margin: 0;
@@ -13,6 +13,11 @@ body {
     text-align: center;
     overflow: hidden;
 }
+
+body {
+    font-family: 'MyCustomFont', sans-serif;
+}
+
 
 /* Glowing Title */
 h1 {
@@ -41,29 +46,6 @@ a {
 a:hover {
     color: #9b59b6;
     text-shadow: 0 0 8px #9b59b6, 0 0 16px #8e44ad;
-}
-
-/* Animated Background Stars */
-@keyframes stars {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -1000px 1000px;
-    }
-}
-
-body::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background: url('https://www.transparenttextures.com/patterns/tiny-stars.png');
-    opacity: 0.1;
-    z-index: 0;
-    animation: stars 30s linear infinite;
 }
 
 /* Glowing Animation */
@@ -115,4 +97,38 @@ button:hover {
 
 #fumo.spin {
     animation: spin 2s linear infinite; /* Spins continuously */
+}
+
+.star {
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%; /* Makes the stars circular */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glow effect */
+    animation: starSpawn 10s linear;
+}
+
+#introText {
+    font-family: 'Lexend Exa';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    text-align: left;
+    font-size: 30px;
+
+    width: 500px;
+    height: 60px;
+}
+
+@keyframes starSpawn {
+    from {
+        background-color: rgba(255, 255, 255, 0);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    }
+    to
+    {
+        background-color: white;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
 }
